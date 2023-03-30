@@ -6,11 +6,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class FileEncryption {
+
     private static final String KEY = "mysecretpassword"; // change this to your own secret key
 
     public static void encryptFile() throws Exception {
         // read the contents of the text file into a byte array
-        byte[] fileContents = Files.readAllBytes(Paths.get("users.txt"));
+        Path path = Paths.get("users.txt");
+        byte[] fileContents = Files.readAllBytes(path);
 
         // create a secret key from the key string
         SecretKeySpec secretKey = new SecretKeySpec(KEY.getBytes(StandardCharsets.UTF_8), "AES");
@@ -23,7 +25,7 @@ public class FileEncryption {
         byte[] encryptedFileContents = cipher.doFinal(fileContents);
 
         // write the encrypted contents back to the file
-        Files.write(Paths.get("users.txt"), encryptedFileContents);
+        Files.write(path, encryptedFileContents);
     }
 }
 
