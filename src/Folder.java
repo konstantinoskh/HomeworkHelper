@@ -1,8 +1,5 @@
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class Folder {
     private String name;
@@ -11,9 +8,10 @@ public class Folder {
 
     public Folder(String name){
         this.name = name;
+        createFolder();
     }
 
-    public void createFolder(){
+    private void createFolder(){
         file = new File(name);
         boolean success = file.mkdirs();
         if (success){

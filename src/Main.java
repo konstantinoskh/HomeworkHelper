@@ -4,10 +4,7 @@ import java.io.File;
 public class Main {
     public static void main(String[] args) throws Exception {
         // Create a new Folder object with the name "Test" in the current directory
-        Folder folder = new Folder("ESS.dir");
-
-        // Test the createFolder() method
-        folder.createFolder();
+        Folder folder = new Folder("ESS");
 
         // Test the changeFileName() method
 
@@ -31,8 +28,7 @@ public class Main {
         folder.deleteFile("test.txt");
 
         // Test the uploadFile() method
-        Folder destinationFile = new Folder("backup.dir");
-        destinationFile.createFolder();
+        Folder destinationFile = new Folder("backup");
 
         File file = folder.returnFile("hello.txt");
         folder.moveFile(file, destinationFile.getName());
