@@ -47,24 +47,7 @@ public class FileUtilities {
         }
         return false;
     }
-    public static void changeSecondElement(String filename, String searchString, String newValue){
-        try (RandomAccessFile raf = new RandomAccessFile(filename, "rw")){
-            while (raf.getFilePointer() < raf.length()){
-                String line = raf.readLine();
-                String firstElement = line.split(":")[0].strip();
 
-                if (firstElement.equals(searchString)){
-                    long filePointer = raf.getFilePointer() - 6;
-                    raf.seek(filePointer);
-                    raf.write(newValue.getBytes());
-                    raf.writeChars("");
-                    break;
-                }
-            }
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-    }
     public static void changeFirstElement(String filename, String searchString, String newString){
         try (RandomAccessFile raf = new RandomAccessFile(filename, "rw")){
             while (raf.getFilePointer() < raf.length()){

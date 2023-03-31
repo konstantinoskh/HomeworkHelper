@@ -1,3 +1,5 @@
+import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -56,15 +58,32 @@ public class ToDoList {
         System.out.println(text);
     }
 
-    public void markItemAsDone(String contents) {
-        for (ToDoListObject element : toDoList) {
-            if (element.getContents().strip().equalsIgnoreCase(contents)) {
-                element.setFinished(true);
-                return;
+    public void tickItemOff(String item){
+        try (RandomAccessFile raf = new RandomAccessFile("to_do_list.txt", "rw")){
+            while (raf.getFilePointer() < raf.length()){
+                String line = raf.readLine();
+                String firstElement = line.split(":")[0].strip();
+                String secondElement = line.split(":")[1].strip();
+
+                if (firstElement.equals(item)){
+                    if (secondElement.equals("true")){
+                        System.out.println("Item is already ticked off");
+                        return;
+                    }
+                    long filePointer = raf.getFilePointer() - 6;
+                    raf.seek(filePointer);
+                    raf.write("true ".getBytes());
+                    filePointer = raf.getFilePointer() - 1;
+                    raf.seek(filePointer);
+                    break;
+                }
+                System.out.println("Item not found");
             }
+        }catch (IOException e){
+            e.printStackTrace();
         }
-        System.out.println("Item not found in the to-do list");
     }
+
 
     public void rewriteItem(String text, String newText){
         for (ToDoListObject element: this.toDoList){

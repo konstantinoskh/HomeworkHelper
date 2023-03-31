@@ -1,4 +1,5 @@
 import java.io.*;
+import java.nio.file.NoSuchFileException;
 import java.util.Scanner;
 
 public class Database {
@@ -78,10 +79,15 @@ public class Database {
 
         System.out.print("Enter a username: ");
         username = sc.next();
-        FileDecryption.decryptFile();
-        if (!checkUsername(users.getName(), username)) {
+        try {
+            FileDecryption.decryptFile();
+            if (!checkUsername(users.getName(), username)) {
+                System.out.println("Account doesn't exist, please create an account \n");
+                FileEncryption.encryptFile();
+                return null;
+            }
+        }catch (NoSuchFileException e){
             System.out.println("Account doesn't exist, please create an account \n");
-            FileEncryption.encryptFile();
             return null;
         }
 

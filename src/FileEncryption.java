@@ -5,9 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class FileEncryption {
-
-    private static final String KEY = "mysecretpassword"; // change this to your own secret key
+public class FileEncryption {// change this to your own secret key
+    private static final String KEY = "konstantinos123456789123";
 
     public static void encryptFile() throws Exception {
         // read the contents of the text file into a byte array
