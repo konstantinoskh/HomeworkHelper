@@ -1,0 +1,2 @@
+shoot myself: true 
+joe mama: false

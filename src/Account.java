@@ -5,6 +5,7 @@ public class Account {
     private String password;
     private ArrayList<String> subjects;
 
+    //creates account with users subjects stored
     public Account(String username, String password, ArrayList<String> subjects) {
         this.username = username;
         this.password = password;
@@ -23,10 +24,12 @@ public class Account {
         return password;
     }
 
+    //changes user's password
     public void setPassword(String password) {
         this.password = password;
     }
 
+    //changes user's username
     public void setUsername(String username) {
         this.username = username;
     }
