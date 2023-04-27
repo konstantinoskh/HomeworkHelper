@@ -104,6 +104,7 @@ public class ToDoList {
         for (ToDoListObject element: this.toDoList){
             if(element.getContents().strip().equalsIgnoreCase(text)){
                 element.setContents(newText);
+                FileUtilities.writeToFile("to_do_list.txt", returnToDoList(this.toDoList), false);
                 return;
             }
         }
@@ -111,7 +112,7 @@ public class ToDoList {
     }
 
     //same as the create to-do list method but it appends an item rather than overwrite the list
-    public void addToDoItems(ArrayList<ToDoListObject> toDoList) {
+    public void addToDoItems() {
         Scanner sc = new Scanner(System.in);
         ArrayList<ToDoListObject> newItems = new ArrayList<>();
         System.out.print("Enter a To-Do List element: ");

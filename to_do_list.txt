@@ -1,2 +1,1 @@
-shoot myself: true 
-joe mama: false
+finish homework: true 

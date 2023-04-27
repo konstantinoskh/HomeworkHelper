@@ -7,7 +7,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.NoSuchAlgorithmException;
-import java.util.Base64;
 
 public class FileDecryption {
     private static final String KEY = "konstantinos123456789123";

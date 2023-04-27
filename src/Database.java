@@ -2,6 +2,8 @@ import org.json.JSONObject;
 
 import java.io.*;
 import java.nio.file.NoSuchFileException;
+import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Database {
@@ -141,6 +143,21 @@ public class Database {
                 System.out.println("You have successfully logged in \n");
                 //encrypt the database so that its contents are not visible
                 FileEncryption.encryptFile();
+
+                ArrayList<String> subjects = new ArrayList<>();
+                while(true){
+                    System.out.println("Enter subject that you do: ");
+                    String subject = sc.next();
+                    if (subject.equalsIgnoreCase("stop")){
+                        break;
+                    }
+                    subjects.add(subject);
+                }
+
+                    for (String subject: subjects){
+                        Folder folder = new Folder(subject);
+                    }
+
                 // return an Account object with inputted username and password
                 return new Account(username, password);
             }
